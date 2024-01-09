@@ -23,8 +23,8 @@ node{
     }
     
     stage('Maven Build'){
-        sh "cd /var/lib/jenkins/workspace/Orbit-Bank"
-        sh "mvn clean package"        
+        def mvnHome = tool name: 'Apache Maven 3.6.3', type: 'maven'
+        sh "/opt/apache-maven-3.6.3/bin/mvn -B -DskipTests clean package"        
     }
     
     stage('Docker Image Build'){
