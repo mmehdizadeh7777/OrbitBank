@@ -23,6 +23,7 @@ node{
     }
     
     stage('Maven Build'){
+        sh "cd /var/lib/jenkins/workspace/Orbit-Bank"
         sh "mvn clean package"        
     }
     
