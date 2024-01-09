@@ -36,8 +36,8 @@ node{
        // withCredentials([usernamePassword(credentialsId: 'dockerHubAccount', usernameVariable: 'dockerUser', passwordVariable: 'dockerPassword')]) {
 		//sh "docker login -u $dockerUser -p $dockerPassword"
 		//sh "docker push $dockerUser/$containerName:$tag"
-		echo "Image push complete"
-        } 
+		//echo "Image push complete"
+        //} 
     }    
 	
 	stage('Ansible Playbook Execution'){
