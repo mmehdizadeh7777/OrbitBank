@@ -24,7 +24,7 @@ node{
     
     stage('Maven Build'){
         //def mvnHome = tool name: '/opt/apache-maven-3.6.3', type: 'maven'
-        sh "/opt/apache-maven-3.6.3/bin/mvn -B -DskipTests clean package"        
+        sh "/opt/apache-maven-3.6.3/bin/mvn -B -DskipTests clean package -e"        
     }
     
     stage('Docker Image Build'){
