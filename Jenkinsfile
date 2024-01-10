@@ -2,9 +2,9 @@ node{
     
     def tag, dockerHubUser, containerName, httpPort = ""
 
-    //tools{
-      //  maven 'myMaven'
-    //}
+    tools{
+        maven 'myMaven'
+    }
     
     stage('Prepare Environment'){
         echo 'Initialize Environment'
@@ -27,8 +27,8 @@ node{
     }
     
     stage('Maven Build'){
-        sh "/opt/apache-maven-3.6.3/bin/mvn clean package"   
-        //sh "mvn clean package"     
+        //sh "/opt/apache-maven-3.6.3/bin/mvn clean package"   
+        sh "mvn clean package -e"     
     }
     
     stage('Docker Image Build'){
