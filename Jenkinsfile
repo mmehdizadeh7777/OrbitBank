@@ -1,7 +1,5 @@
 node{
     
-    def tag, dockerHubUser, containerName, httpPort = ""
-
     environment {
         DOCKERHUB_CREDENTIALS = credentials('dockerHubAccount')
     	dockerHubUser = 'mmehdizadeh7777'
