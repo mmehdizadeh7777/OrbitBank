@@ -1,12 +1,13 @@
-node{
+pipeline {
+    agent any
     
     environment {
         DOCKERHUB_CREDENTIALS = credentials('dockerHubAccount')
-    	dockerHubUser = 'mmehdizadeh7777'
-        tag="1.0"
-        containerName="bankingapp"
-	    httpPort="8989"
     }
+    def dockerHubUser = 'mmehdizadeh7777'
+    def tag="1.0"
+    def containerName="bankingapp"
+	def httpPort="8989"
     
     stage('Code Checkout'){
         try{
@@ -19,7 +20,7 @@ node{
     }
     
     stage('Maven Build'){
-        sh "/opt/apache-maven-3.6.3/bin/mvn clean package -e"   
+        sh "/opt/apache-maven-3.6.3/bin/mvn clean package"   
            
     }
     
