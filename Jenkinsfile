@@ -11,7 +11,7 @@ node{
         tag="3.0"
 	//withCredentials([usernamePassword(credentialsId: 'dockerHubAccount', usernameVariable: 'dockerUser', passwordVariable: 'dockerPassword')]) {
 	//	dockerHubUser="$dockerUser"
-        }
+       // }
 	containerName="bankingapp"
 	httpPort="8989"
     }
