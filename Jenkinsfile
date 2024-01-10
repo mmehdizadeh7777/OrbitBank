@@ -2,8 +2,8 @@ node{
     
     def tag, dockerHubUser, containerName, httpPort = ""
 
-    tools{
-        maven 'myMaven'
+    tools { 
+        maven 'myMaven'      
     }
     
     stage('Prepare Environment'){
