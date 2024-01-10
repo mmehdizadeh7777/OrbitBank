@@ -35,9 +35,19 @@ node{
 	
     stage('Publishing Image to DockerHub'){
         echo 'Pushing the docker image to DockerHub'
-        sh "echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin"
-        sh "docker push $dockerUser/$containerName:$tag"
-        echo "Image push complete"
+        //sh "echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin"
+        withCredentials([usernamePassword(credentialsId: 'dockerHubAccount',
+                     usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+ 
+                     sh 'echo $PASSWORD'
+                    echo "${env.USERNAME}"
+            
+            sh "docker login -u $USERNAME -p $PASSWORD"
+            sh "docker push $USERNAME/$containerName:$tag"
+            echo "Image push complete"
+        }
+
+
     }    
 	
 	stage('Ansible Playbook Execution'){
