@@ -1,10 +1,9 @@
-pipeline {
-    agent any
+node{
     
+     def tag, dockerHubUser, containerName, httpPort = ""
     environment {
         DOCKERHUB_CREDENTIALS = credentials('dockerHubAccount')
     }
-    def dockerHubUser, tag, containerName, httpPort
     
     stage('Initialized Environment'){
         dockerHubUser = 'mmehdizadeh7777'
