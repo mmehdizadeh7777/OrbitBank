@@ -1,13 +1,17 @@
 node{
     
     def tag, dockerHubUser, containerName, httpPort = ""
+
+    tools{
+        maven 'myMaven'
+    }
     
     stage('Prepare Environment'){
         echo 'Initialize Environment'
         tag="3.0"
-	//withCredentials([usernamePassword(credentialsId: 'dockerHubAccount', usernameVariable: 'dockerUser', passwordVariable: 'dockerPassword')]) {
-		//dockerHubUser="$dockerUser"
-        //}
+	withCredentials([usernamePassword(credentialsId: 'dockerHubAccount', usernameVariable: 'dockerUser', passwordVariable: 'dockerPassword')]) {
+		dockerHubUser="$dockerUser"
+        }
 	containerName="bankingapp"
 	httpPort="8989"
     }
@@ -23,7 +27,8 @@ node{
     }
     
     stage('Maven Build'){
-        sh "/opt/apache-maven-3.6.3/bin/mvn clean package"        
+        //sh "/opt/apache-maven-3.6.3/bin/mvn clean package"   
+        sh "mvn clean package"     
     }
     
     stage('Docker Image Build'){
