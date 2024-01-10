@@ -4,10 +4,15 @@ pipeline {
     environment {
         DOCKERHUB_CREDENTIALS = credentials('dockerHubAccount')
     }
-    def dockerHubUser = 'mmehdizadeh7777'
-    def tag="1.0"
-    def containerName="bankingapp"
-	def httpPort="8989"
+    def dockerHubUser, tag, containerName, httpPort
+    
+    stage('Initialized Environment'){
+        dockerHubUser = 'mmehdizadeh7777'
+        tag="1.0"
+        containerName="bankingapp"
+        httpPort="8989"      
+    }
+    
     
     stage('Code Checkout'){
         try{
