@@ -6,7 +6,7 @@
     ignore_errors: true
 
   - name: Performing Deployment of mmehdizadeh7777/bankingapp
-    command: "kubectl create deployment bankingapp --image=docker.io/mmehdizadeh7777/bankingapp --port=8989 "
+    command: "kubectl create deployment bankingapp --image=docker.io/mmehdizadeh7777/bankingapp:1.0 --port=8989 "
 
   - name: Get Container List
     command: "kubectl get pods -o wide"
