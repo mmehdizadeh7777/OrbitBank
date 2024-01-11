@@ -51,17 +51,18 @@ node{
     }    
 	
 	stage('Ansible Playbook Execution'){
-		//sh "ansible-playbook -i inventory.yaml kubernetesDeploy.yaml -e httpPort=$httpPort -e containerName=$containerName -e dockerImageTag=$dockerHubUser/$containerName:$tag" --key-file ~/.ssh/id_rsa
+        echo "deploying banking pod in Kubernetes"
+		sh "ansible-playbook -i inventory.yaml kubernetesDeploy.yaml -e httpPort=$httpPort -e containerName=$containerName -e dockerImageTag=$dockerHubUser/$containerName:$tag --key-file ~/.ssh/id_rsa"
 
 
-                                echo "deploying banking pod in Kubernetes"
-                                script{
-                                    def ansiblecmd = "ansible-playbook -i inventory.yaml kubernetesDeploy.yaml -e httpPort=$httpPort -e containerName=$containerName -e dockerImageTag=$dockerHubUser/$containerName:$tag"
-                                    sshagent(['master-key']) {
-                                      sh "ssh -o StrictHostKeyChecking=no root@192.168.85.20 ${ansiblecmd}"
+                                
+                              //  script{
+                                   // def ansiblecmd = "ansible-playbook -i inventory.yaml kubernetesDeploy.yaml -e httpPort=$httpPort -e containerName=$containerName -e dockerImageTag=$dockerHubUser/$containerName:$tag"
+                                  //  sshagent(['master-key']) {
+                                   //   sh "ssh -o StrictHostKeyChecking=no root@192.168.85.20 ${ansiblecmd}"
 
-                                    }
-                                }           
+                                  //  }
+                               // }           
 	}
 }
 
