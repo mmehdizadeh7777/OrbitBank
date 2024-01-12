@@ -5,12 +5,16 @@
     command: "kubectl delete deployment {{ containerName }}"
     ignore_errors: true
 
+  - name: Remove Existing service
+    command: "kubectl delete service {{ containerName }}"
+    ignore_errors: true
+
   - name: Performing Deployment of mmehdizadeh7777/bankingapp
     command: "kubectl create deployment {{ containerName }} --image=docker.io/{{ dockerImageTag }} --port={{ httpPort }} "
   
 
   - name: Creating a NodPort service for bankingapp
-    command: "kubectl expose deployment/{{ containerName }} --type="NodePort" --port 8989 --selector=app={{ containerName }}" 
+    command: "kubectl expose deployment/{{ containerName }} --type=NodePort --port {{ httpPort }} --selector=app={{ containerName }}" 
 
   - name: Get Container List
     command: "kubectl get pods -o wide"
