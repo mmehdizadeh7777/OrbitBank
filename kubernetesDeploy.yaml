@@ -8,8 +8,13 @@
   - name: Performing Deployment of mmehdizadeh7777/bankingapp
     command: "kubectl create deployment {{ containerName }} --image=docker.io/{{ dockerImageTag }} --port={{ httpPort }} "
   
+  - name: Copy bankingapp-svc file
+    copy:
+    src: /$HOME/OrbitBank
+    dest: /$HOME
+
   - name: Creating a NodPort service for bankingapp
-    command: "kubectl apply -f {{path}}/bankingapp-svc.yaml"
+    command: "kubectl apply -f /$HOME/bankingapp-svc.yaml"
 
   - name: Get Container List
     command: "kubectl get pods -o wide"

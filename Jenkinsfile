@@ -9,7 +9,7 @@ node{
         dockerHubUser = 'mmehdizadeh7777'
         tag="1.0"
         containerName="bankingapp"
-        httpPort="8989"      
+        httpPort="8989"    
     }
     
     
