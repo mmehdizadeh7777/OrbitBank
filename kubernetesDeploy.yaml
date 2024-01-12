@@ -2,14 +2,14 @@
   hosts : kubernetes
   tasks : 
   - name: Remove Existing Container
-    command: "kubectl delete deployment bankingapp"
+    command: "kubectl delete deployment {{ containerName }}"
     ignore_errors: true
 
   - name: Performing Deployment of mmehdizadeh7777/bankingapp
-    command: "kubectl create deployment bankingapp --image=mmehdizadeh7777/bankingapp:1.0 --port=8989 "
+    command: "kubectl create deployment {{ containerName }} --image=docker.io/{{ dockerImageTag }} --port={{ httpPort }} "
   
   - name: Creating a NodPort service for bankingapp
-    command: "kubectl apply -f bankingapp-svc.yaml"
+    command: "kubectl apply -f {{path}}/bankingapp-svc.yaml"
 
   - name: Get Container List
     command: "kubectl get pods -o wide"
