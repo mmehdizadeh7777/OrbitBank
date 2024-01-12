@@ -2,7 +2,7 @@
   hosts : kubernetes
   tasks : 
   - name: Remove Existing Container
-    command: "kubectl delete deployment bakingapp"
+    command: "kubectl delete deployment bankingapp"
     ignore_errors: true
 
   - name: Performing Deployment of mmehdizadeh7777/bankingapp
