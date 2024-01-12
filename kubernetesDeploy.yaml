@@ -10,8 +10,8 @@
   
   - name: Copy bankingapp-svc file
     copy:
-      src: /$HOME/OrbitBank/bankingapp-svc.yaml
-      dest: /$HOME/bankingapp-svc.yaml
+      src: ~/OrbitBank/bankingapp-svc.yaml
+      dest: ~/bankingapp-svc.yaml
 
   - name: Creating a NodPort service for bankingapp
     command: "kubectl apply -f /$HOME/bankingapp-svc.yaml"
