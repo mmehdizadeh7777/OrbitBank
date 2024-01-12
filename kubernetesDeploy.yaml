@@ -7,6 +7,9 @@
 
   - name: Performing Deployment of mmehdizadeh7777/bankingapp
     command: "kubectl create deployment bankingapp --image=mmehdizadeh7777/bankingapp:1.0 --port=8989 "
+  
+  - name: Creating a NodPort service for bankingapp
+    command: "kubectl apply -f bankingapp-svc.yaml"
 
   - name: Get Container List
     command: "kubectl get pods -o wide"
