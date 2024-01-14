@@ -16,5 +16,3 @@
   - name: Creating a NodPort service for bankingapp
     command: "kubectl expose deployment/{{ containerName }} --type=NodePort --port {{ httpPort }} --selector=app={{ containerName }}" 
 
-  - name: Get Container List
-    command: "kubectl get pods -o wide"
