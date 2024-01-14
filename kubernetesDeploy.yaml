@@ -9,10 +9,10 @@
     command: "kubectl delete service {{ containerName }}"
     ignore_errors: true
 
-  - name: Performing Deployment of mmehdizadeh7777/bankingapp
+  - name: Performing Deployment of {{ containerName }}
     command: "kubectl create deployment {{ containerName }} --image=docker.io/{{ dockerImageTag }} --port={{ httpPort }} "
   
 
-  - name: Creating a NodPort service for bankingapp
+  - name: Creating a NodPort service for {{ containerName }}
     command: "kubectl expose deployment/{{ containerName }} --type=NodePort --port {{ httpPort }} --selector=app={{ containerName }}" 
 
