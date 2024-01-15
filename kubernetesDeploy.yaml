@@ -10,7 +10,7 @@
     ignore_errors: true
 
   - name: Performing Deployment of {{ containerName }}
-    command: "kubectl create deployment {{ containerName }} --image=docker.io/{{ dockerImageTag }} --port={{ httpPort }} "
+    command: "kubectl create deployment {{ containerName }} --image=docker.io/{{ dockerImageTag }} --port={{ httpPort }} --replicas=3"
   
 
   - name: Creating a NodPort service for {{ containerName }}
